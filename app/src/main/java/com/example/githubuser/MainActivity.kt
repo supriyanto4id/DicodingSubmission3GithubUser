@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.githubuser.UserDetail.Companion.EXTRA_USER
 import com.example.githubuser.databinding.ActivityMainBinding
 import com.example.githubuser.databinding.ItemUserBinding
 import com.google.android.material.tabs.TabLayout
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.O
         adapter.setOnItemCallback(object : UserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: UserItem) {
                 val intentData = Intent(this@MainActivity, UserDetail::class.java)
-                intentData.putExtra("extra_user", data)
+                intentData.putExtra(EXTRA_USER, data)
                 startActivity(intentData)
             }
 

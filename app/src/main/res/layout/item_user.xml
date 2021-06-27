@@ -7,7 +7,6 @@
     android:layout_marginLeft="4dp"
     android:layout_marginTop="2dp"
     android:layout_marginRight="4dp"
-    android:outlineAmbientShadowColor="@color/primaryLightColor"
     android:layout_marginBottom="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,18 +39,6 @@
         app:layout_constraintStart_toEndOf="@+id/img_item_photo"
         app:layout_constraintTop_toTopOf="@+id/img_item_photo" />
 
-        <ImageButton
-            android:id="@+id/fav_btn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_favorite_border_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/login_name"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.777" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -67,13 +67,6 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
         }
 
-        fun favorite(status : Boolean){
-            if (status == true){
-                binding.favBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
-            }else{
-                binding.favBtn.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-            }
-        }
     }
 
 

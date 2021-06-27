@@ -6,4 +6,9 @@
     <string name="tab_text_2">Following</string>
     <string name="search_user">Search User</string>
     <string name="change_language_setting">Change Language Setting</string>
+    <string name="username_icon">Username Icon</string>
+    <string name="company_icon">Company Icon</string>
+    <string name="website_icon">Website Icon</string>
+    <string name="location_icon">Location Icon</string>
+    <string name="favorite_action">Favorite Action</string>
 </resources>
