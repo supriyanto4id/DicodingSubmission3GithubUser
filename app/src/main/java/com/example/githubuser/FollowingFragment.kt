@@ -6,23 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubuser.databinding.ActivityMainBinding
+import com.example.githubuser.adapter.FollowingAdapter
 
 import com.example.githubuser.databinding.FragmentFollowingBinding
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpResponseHandler
-import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
-import java.lang.Exception
-import java.util.ArrayList
+import com.example.githubuser.model.MainViewModel
 
 
 class FollowingFragment : Fragment() {
 
-    private lateinit var adapter:FollowingAdapter
+    private lateinit var adapter: FollowingAdapter
     private lateinit var binding: FragmentFollowingBinding
     private lateinit var mainViewModel: MainViewModel
 

@@ -8,9 +8,4 @@
         android:title="Favorite"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/Setting"
-        android:icon="@drawable/ic_baseline_settings_applications_24"
-        android:title="Favorite"
-        app:showAsAction="ifRoom" />
 </menu>

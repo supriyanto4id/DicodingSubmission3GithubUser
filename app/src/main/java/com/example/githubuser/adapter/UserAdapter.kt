@@ -1,15 +1,13 @@
-package com.example.githubuser
+package com.example.githubuser.adapter
 
-import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.Toast
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.githubuser.R
+import com.example.githubuser.data.UserItem
 import com.example.githubuser.databinding.ItemUserBinding
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
@@ -29,12 +27,12 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): UserAdapter.UserViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): UserViewHolder {
         val mView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_user,viewGroup,false)
         return UserViewHolder(mView)
     }
 
-    override fun onBindViewHolder(holder: UserAdapter.UserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         holder.bind(mData[position])
 
 
@@ -52,7 +50,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     inner class UserViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val binding = ItemUserBinding.bind(itemView)
-        fun bind(userItem:UserItem){
+        fun bind(userItem: UserItem){
             with(binding){
                 Glide.with(itemView.context)
                         .load(userItem.imgAvatar)

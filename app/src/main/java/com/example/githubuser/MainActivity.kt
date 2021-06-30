@@ -1,33 +1,22 @@
 package com.example.githubuser
 
-import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
-import androidx.annotation.StringRes
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.example.githubuser.UserDetail.Companion.EXTRA_USER
+import com.example.githubuser.adapter.UserAdapter
+import com.example.githubuser.data.UserItem
 import com.example.githubuser.databinding.ActivityMainBinding
 import com.example.githubuser.databinding.ItemUserBinding
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpResponseHandler
-import cz.msebera.android.httpclient.Header
-import org.json.JSONObject
-import java.lang.Exception
+import com.example.githubuser.model.MainViewModel
 
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.OnClickListener {
@@ -90,22 +79,18 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.O
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-//        if(item.itemId ==R.id.action_change_settings){
-//            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-//            startActivity(mIntent)
-//        }
-
         when(item.itemId){
             R.id.action_change_settings->{
-                val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-                startActivity(mIntent)
+                val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(intent)
             }
             R.id.favorite->{
                 val intent =Intent(this@MainActivity,FavoriteUserActivity::class.java)
                 startActivity(intent)
             }
-            R.id.Setting->{
-
+            R.id.setting_daily_notification->{
+            val intent = Intent(this,NotificationActivity::class.java)
+                startActivity(intent)
             }
             }
 

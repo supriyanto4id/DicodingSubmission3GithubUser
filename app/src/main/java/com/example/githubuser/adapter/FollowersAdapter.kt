@@ -1,4 +1,4 @@
-package com.example.githubuser
+package com.example.githubuser.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.githubuser.R
+import com.example.githubuser.data.FollowersFollowingItem
 import com.example.githubuser.databinding.ItemFollowersFollowingBinding
 
 class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.FollowersViewHolder>() {
@@ -19,12 +21,12 @@ class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.FollowersViewHold
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FollowersAdapter.FollowersViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FollowersViewHolder {
        val mView =LayoutInflater.from(viewGroup.context).inflate(R.layout.item_followers_following,viewGroup,false)
         return FollowersViewHolder(mView)
     }
 
-    override fun onBindViewHolder(holder: FollowersAdapter.FollowersViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FollowersViewHolder, position: Int) {
         holder.bind(mData[position])
     }
 

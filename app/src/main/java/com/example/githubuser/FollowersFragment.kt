@@ -3,26 +3,18 @@ package com.example.githubuser
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubuser.databinding.ActivityMainBinding
+import com.example.githubuser.adapter.FollowersAdapter
 import com.example.githubuser.databinding.FragmentFollowersBinding
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpResponseHandler
-import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
-import java.lang.Exception
-import java.util.*
+import com.example.githubuser.model.MainViewModel
 
 
 class FollowersFragment : Fragment() {
 
-    private lateinit var adapter:FollowersAdapter
+    private lateinit var adapter: FollowersAdapter
     private lateinit var binding: FragmentFollowersBinding
 
     private lateinit var mainViewModel: MainViewModel

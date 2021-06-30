@@ -2,6 +2,7 @@ package com.example.githubuser
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuser.adapter.UserFavAdapter
@@ -19,13 +20,13 @@ class FavoriteUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_user)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        title ="Favorite User"
 
 
         binding = ActivityFavoriteUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-      //  adapter.notifyDataSetChanged()
 
         binding.recycleView.layoutManager =LinearLayoutManager(this)
         binding.recycleView.setHasFixedSize(true)
@@ -45,7 +46,6 @@ class FavoriteUserActivity : AppCompatActivity() {
                 MappingHelper.mapCursorToArrayList(cursor)
             }
 
-           // userHelper.close()
 
             val user =deferredUser.await()
 
@@ -66,6 +66,13 @@ class FavoriteUserActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadNotesAsync()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==android.R.id.home){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

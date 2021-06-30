@@ -26,23 +26,6 @@ class UserFavAdapter(private val activity: Activity) : RecyclerView.Adapter<User
         notifyDataSetChanged()
          }
 
-    fun addItem(favorite: Favorite){
-        this.listUser.add(Favorite())
-        notifyItemInserted(this.listUser.size-1)
-    }
-
-    fun updateItem(position: Int, favorite: Favorite){
-        this.listUser[position]= favorite
-        notifyItemChanged(position,favorite)
-
-    }
-
-    fun removeItem(position: Int){
-        this.listUser.removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, this.listUser.size)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserFavAdapter.UserFavViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_fav_user,parent,false)
         return UserFavViewHolder(view)
@@ -65,7 +48,7 @@ class UserFavAdapter(private val activity: Activity) : RecyclerView.Adapter<User
                    .load(favorite.avatar)
                    .apply(RequestOptions().override(110,110))
                    .into(binding.imgItemPhoto)
-           Toast.makeText(itemView.context,"Hallo"+favorite,Toast.LENGTH_LONG).show()
+           //Toast.makeText(itemView.context,"Hallo"+favorite,Toast.LENGTH_LONG).show()
            itemView.setOnClickListener(
                    CustomOnItemClickListener(
                     adapterPosition,

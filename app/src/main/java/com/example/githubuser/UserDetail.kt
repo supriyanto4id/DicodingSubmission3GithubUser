@@ -5,6 +5,7 @@ import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 
 import android.widget.Toast
@@ -13,25 +14,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.githubuser.adapter.SectionsPagerAdapter
 import com.example.githubuser.data.Favorite
-import com.example.githubuser.databinding.ActivityFavoriteUserBinding
+import com.example.githubuser.data.UserItem
 import com.example.githubuser.databinding.ActivityUserDetailBinding
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.AVATAR_URL
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.BLOG_URL
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.COMPANY
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.LOCATION
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.USERNAME
-import com.example.githubuser.db.DatabaseContract.UserColumns.Companion._ID
-import com.example.githubuser.db.DatabaseHelper
 import com.example.githubuser.db.UserHelper
-import com.example.githubuser.helper.MappingHelper
+import com.example.githubuser.model.MainViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpResponseHandler
-import cz.msebera.android.httpclient.Header
-import org.json.JSONObject
-import java.lang.Exception
 
 class UserDetail() : AppCompatActivity(), View.OnClickListener {
 
@@ -68,6 +63,8 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_detail)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        title ="Detail"
         userHelper = UserHelper.getInstance(applicationContext)
         userHelper.open()
 
@@ -209,5 +206,11 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId==   android.R.id.home)
+            finish()
+        return super.onOptionsItemSelected(item)
     }
 }

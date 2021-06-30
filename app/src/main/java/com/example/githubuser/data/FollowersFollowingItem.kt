@@ -1,4 +1,4 @@
-package com.example.githubuser
+package com.example.githubuser.data
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -21,7 +21,7 @@ class FollowersFollowingItem(
     }
 
     companion object CREATOR : Parcelable.Creator<FollowersFollowingItem> {
-        override fun createFromParcel(parcel: Parcel): FollowersFollowingItem{
+        override fun createFromParcel(parcel: Parcel): FollowersFollowingItem {
             return FollowersFollowingItem(parcel)
         }
 

@@ -1,11 +1,11 @@
-package com.example.githubuser
+package myid.supri.consumerappgithubuser
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class FavoriteUserDetailActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favorite_user_detail)
+        setContentView(R.layout.activity_main)
     }
 }

@@ -11,4 +11,9 @@
     <string name="website_icon">Website Icon</string>
     <string name="location_icon">Location Icon</string>
     <string name="favorite_action">Favorite Action</string>
+    <string name="reminder_setting">Reminder Setting</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="set_time">Set Time</string>
+    <string name="on_off">ON / OFF</string>
+    <string name="set_time_for_daily_reminder">Set Time For Daily Reminder</string>
 </resources>
