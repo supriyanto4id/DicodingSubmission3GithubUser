@@ -16,4 +16,5 @@
     <string name="set_time">Set Time</string>
     <string name="on_off">ON / OFF</string>
     <string name="set_time_for_daily_reminder">Set Time For Daily Reminder</string>
+    <string name="remnider_on_09_00">Remnider on 09:00</string>
 </resources>

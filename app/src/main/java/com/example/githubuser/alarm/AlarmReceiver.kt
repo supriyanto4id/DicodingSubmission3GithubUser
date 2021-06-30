@@ -42,7 +42,7 @@ class AlarmReceiver: BroadcastReceiver()  {
         ShowAlarmNotif(context,message)
     }
 
-    fun setDailyReminderAlarm(context: Context?, type: String , message: String?, time:String){
+    fun setDailyReminderAlarm(context: Context?, type: String , message: String?, time:String?){
         val alarmManager= context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
 

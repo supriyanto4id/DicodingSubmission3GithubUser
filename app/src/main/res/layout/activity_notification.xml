@@ -14,35 +14,35 @@
         android:layout_height="wrap_content"
         android:text="@string/reminder_setting"
        android:padding="8dp" />
-    <LinearLayout
+<!--    <LinearLayout-->
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginStart="8dp">
-
-
-        <ImageButton
-            android:id="@+id/set_time"
-            android:src="@drawable/ic_baseline_access_time_24"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/set_time_for_daily_reminder" />
-
-        <TextView
-            android:id="@+id/tv_set_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/set_time" />
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginStart="8dp">-->
 
 
-    </LinearLayout>
+<!--        <ImageButton-->
+<!--            android:id="@+id/set_time"-->
+<!--            android:src="@drawable/ic_baseline_access_time_24"-->
+<!--            android:layout_width="wrap_content"-->
+
+<!--            android:layout_height="wrap_content"-->
+<!--            android:contentDescription="@string/set_time_for_daily_reminder" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_set_time"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:text="@string/set_time" />-->
+
+
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,6 +65,13 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/on_off" />
+
+        <TextView
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/remnider_on_09_00" />
 
     </LinearLayout>
 </LinearLayout>

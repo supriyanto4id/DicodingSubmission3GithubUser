@@ -13,7 +13,7 @@ import com.example.githubuser.databinding.ActivityNotificationBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NotificationActivity : AppCompatActivity(), View.OnClickListener,TimePickerFragment.DialogTimeListener {
+class NotificationActivity : AppCompatActivity() {
     companion object {
         const val PREFS_NAME = "SettingPref"
         private const val DAILY = "daily"
@@ -42,7 +42,7 @@ class NotificationActivity : AppCompatActivity(), View.OnClickListener,TimePicke
 
         setSwitch()
         binding.switchDailyReminder.setOnCheckedChangeListener{_,isCheked->
-            val onceTime = binding?.tvSetTime.text.toString()
+           val onceTime = null //binding?.tvSetTime.text.toString()
             if (isCheked){
                 alarmReceiver.setDailyReminderAlarm(this,AlarmReceiver.TYPE_DAILY,"find new user in github user",onceTime)
 
@@ -52,7 +52,7 @@ class NotificationActivity : AppCompatActivity(), View.OnClickListener,TimePicke
             saveChengeSwitch(isCheked)
         }
 
-        binding.setTime.setOnClickListener(this)
+       // binding.setTime.setOnClickListener(this)
 
     }
 
@@ -74,30 +74,30 @@ class NotificationActivity : AppCompatActivity(), View.OnClickListener,TimePicke
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.set_time->{
-                val timePickerFragmentOne = TimePickerFragment()
-                timePickerFragmentOne.show(supportFragmentManager, TIME_PICKER_ONCE_TAG)
-            }
-        }
-    }
-    override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
-
-        // Siapkan time formatter-nya terlebih dahulu
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-        calendar.set(Calendar.MINUTE, minute)
-
-        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-
-        // Set text dari textview berdasarkan tag
-        when (tag) {
-            TIME_PICKER_ONCE_TAG -> binding?.tvSetTime?.text = dateFormat.format(calendar.time)
-            TIME_PICKER_REPEAT_TAG -> {}
-            else -> {
-            }
-        }
-    }
+//    override fun onClick(v: View?) {
+//        when(v?.id){
+//            R.id.set_time->{
+//                val timePickerFragmentOne = TimePickerFragment()
+//                timePickerFragmentOne.show(supportFragmentManager, TIME_PICKER_ONCE_TAG)
+//            }
+//        }
+//    }
+//    override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
+//
+//        // Siapkan time formatter-nya terlebih dahulu
+//        val calendar = Calendar.getInstance()
+//        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+//        calendar.set(Calendar.MINUTE, minute)
+//
+//        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+//
+//        // Set text dari textview berdasarkan tag
+//        when (tag) {
+//            TIME_PICKER_ONCE_TAG -> binding?.tvSetTime?.text = dateFormat.format(calendar.time)
+//            TIME_PICKER_REPEAT_TAG -> {}
+//            else -> {
+//            }
+//        }
+//    }
 
 }
