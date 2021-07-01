@@ -135,6 +135,7 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
         userName?.let {
             showLoading(true)
             mainViewModel.setDetailDataUser(it) }
+
         imageAvatar= user?.imgAvatar.toString()
         with(binding){
             Glide.with(imgUser)

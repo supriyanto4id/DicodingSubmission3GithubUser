@@ -54,12 +54,11 @@ class FollowingFragment : Fragment() {
 
         mainViewModel = ViewModelProvider(this,ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
         username?.let { mainViewModel.setListFollowing(it) }
-        mainViewModel.getListFollowing().observe(viewLifecycleOwner,{FollowersFollowingItem->
-            if (FollowersFollowingItem!=null){
-                adapter.setData(FollowersFollowingItem)
+        mainViewModel.getListFollowing().observe(viewLifecycleOwner,{UserItem->
+            if (UserItem!=null){
+                adapter.setData(UserItem)
             }
         })
-       // username?.let { listFollowing(it) }
     }
 
 

@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.githubuser.R
-import com.example.githubuser.data.FollowersFollowingItem
+import com.example.githubuser.data.UserItem
 
 import com.example.githubuser.databinding.ItemFollowersFollowingBinding
 
 class FollowingAdapter :RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder>(){
 
-    private val mData = ArrayList<FollowersFollowingItem>()
-    fun setData(items: ArrayList<FollowersFollowingItem>){
+    private val mData = ArrayList<UserItem>()
+    fun setData(items: ArrayList<UserItem>){
         mData.clear()
         mData.addAll(items)
         notifyDataSetChanged()
@@ -35,7 +35,7 @@ class FollowingAdapter :RecyclerView.Adapter<FollowingAdapter.FollowingViewHolde
 
   inner  class FollowingViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         private val binding = ItemFollowersFollowingBinding.bind(itemView)
-      fun bind(userItem: FollowersFollowingItem){
+      fun bind(userItem: UserItem){
           with(binding){
               Glide.with(itemView.context)
                       .load(userItem.imgAvatar)

@@ -53,9 +53,9 @@ class FollowersFragment : Fragment() {
         username?.let { mainViewModel.setListFollowers(it) }
 
        // username?.let { listFollowers(it) }
-        mainViewModel.getListFollowers().observe(viewLifecycleOwner,{FollowersFollowingItem->
-            if (FollowersFollowingItem!=null){
-                adapter.setData(FollowersFollowingItem)
+        mainViewModel.getListFollowers().observe(viewLifecycleOwner,{UserItem->
+            if (UserItem!=null){
+                adapter.setData(UserItem)
             }
         })
     }

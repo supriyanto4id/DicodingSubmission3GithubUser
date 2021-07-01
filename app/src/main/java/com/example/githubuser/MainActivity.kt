@@ -19,11 +19,10 @@ import com.example.githubuser.databinding.ItemUserBinding
 import com.example.githubuser.model.MainViewModel
 
 
-class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.OnClickListener {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private lateinit var adapter: UserAdapter
     private lateinit var binding: ActivityMainBinding
-   private lateinit var bindingItemUser: ItemUserBinding
 
     private lateinit var mainViewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,7 +115,5 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.O
         return false
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-    }
+
 }
