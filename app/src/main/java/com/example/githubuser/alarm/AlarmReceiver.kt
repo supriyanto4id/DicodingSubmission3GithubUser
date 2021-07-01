@@ -74,7 +74,7 @@ class AlarmReceiver: BroadcastReceiver()  {
             AlarmManager.INTERVAL_DAY,
             pendingInten
         )
-        Toast.makeText(context,"Daily Reminder is ON", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,context.getString(R.string.daily_reminder_on), Toast.LENGTH_SHORT).show()
 
     }
 
@@ -86,7 +86,7 @@ class AlarmReceiver: BroadcastReceiver()  {
             pendingIntent.cancel()
             alarmManager.cancel(pendingIntent)
 
-            Toast.makeText(context,"Daily Reminder is Off", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,context.getString(R.string.daily_reminder_off), Toast.LENGTH_SHORT).show()
     }
     fun ShowAlarmNotif(context: Context?, message: String?){
 

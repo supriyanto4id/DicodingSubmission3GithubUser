@@ -32,7 +32,7 @@ class NotificationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_notification)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        title ="Setting"
+        title =getString(R.string.setting)
 
         binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -44,7 +44,7 @@ class NotificationActivity : AppCompatActivity() {
         binding.switchDailyReminder.setOnCheckedChangeListener{_,isCheked->
            val onceTime = null //binding?.tvSetTime.text.toString()
             if (isCheked){
-                alarmReceiver.setDailyReminderAlarm(this,AlarmReceiver.TYPE_DAILY,"find new user in github user",onceTime)
+                alarmReceiver.setDailyReminderAlarm(this,AlarmReceiver.TYPE_DAILY,getString(R.string.alarm_message_reminder_alarm),onceTime)
 
             }else{
                 alarmReceiver.cancelAlaramNotif(this)

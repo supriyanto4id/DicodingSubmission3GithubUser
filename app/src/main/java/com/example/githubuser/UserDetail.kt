@@ -64,7 +64,7 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_user_detail)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        title ="Detail"
+        title =getString(R.string.detail)
         userHelper = UserHelper.getInstance(applicationContext)
         userHelper.open()
 
@@ -134,7 +134,7 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
         userName = user?.nameLogin.toString()
         userName?.let {
             showLoading(true)
-            mainViewModel.setDetailDataUser(it) }
+            mainViewModel.setDetailDataUser(it,this) }
 
         imageAvatar= user?.imgAvatar.toString()
         with(binding){
@@ -155,7 +155,7 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
         userName = favorite?.username.toString()
         userName?.let {
             showLoading(true)
-            mainViewModel.setDetailDataUser(it) }
+            mainViewModel.setDetailDataUser(it,this) }
         imageAvatar= favorite?.avatar.toString()
         with(binding){
             Glide.with(imgUser)
@@ -176,7 +176,7 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
            // userHelper.deleteById(favorite?._id.toString())
             userHelper.deleteByUsername(deleteFavorite)
             Log.d("MyDatbase","data ="+deleteFavorite)
-            Toast.makeText(this, "delete Favorite ku", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.delete_favorite), Toast.LENGTH_SHORT).show()
             binding.Fav.setImageResource(unChecked)
             isFavorite =false
         } else{
@@ -190,7 +190,7 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
 
             userHelper.insert(values)
             isFavorite =true
-            Toast.makeText(this, "add Favorite", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.add_favorite), Toast.LENGTH_SHORT).show()
             binding.Fav.setImageResource(checked)
             }
         }

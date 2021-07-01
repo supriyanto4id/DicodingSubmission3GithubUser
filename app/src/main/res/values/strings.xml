@@ -17,4 +17,14 @@
     <string name="on_off">ON / OFF</string>
     <string name="set_time_for_daily_reminder">Set Time For Daily Reminder</string>
     <string name="remnider_on_09_00">Remnider on 09:00</string>
+    <string name="add_favorite">Add favorite</string>
+    <string name="delete_favorite">delete favorite</string>
+    <string name="alarm_message_reminder_alarm">Hallo find new user in github user</string>
+    <string name="setting">Setting</string>
+    <string name="detail">Detail</string>
+    <string name="favorite_user">Favorite User</string>
+    <string name="daily_reminder_on">Daily reminder is ON</string>
+    <string name="setting_daily_notification">Setting Daily Notification</string>
+    <string name="favorite">Favorite</string>
+    <string name="daily_reminder_off">Daily Reminder is Off</string>
 </resources>

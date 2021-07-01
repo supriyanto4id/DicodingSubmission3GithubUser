@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         showLoading(true)
-        mainViewModel.setDataUser(query.toString())
+        mainViewModel.setDataUser(query.toString(),this)
         return false
     }
 
