@@ -1,10 +1,15 @@
-package com.example.githubuser
+package com.example.githubuser.model
 
+import android.app.Activity
 import android.content.Context
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+
+import com.example.githubuser.data.UserDetailItem
+import com.example.githubuser.data.UserItem
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -18,14 +23,14 @@ class MainViewModel : ViewModel() {
 
     var detailUser = MutableLiveData<ArrayList<UserDetailItem>>()
 
-    var listFollowers = MutableLiveData<ArrayList<FollowersFollowingItem>>()
+    var listFollowers = MutableLiveData<ArrayList<UserItem>>()
 
-    var listFollowing = MutableLiveData<ArrayList<FollowersFollowingItem>>()
+    var listFollowing = MutableLiveData<ArrayList<UserItem>>()
 
-    fun setDataUser(user:String){
+    fun setDataUser(user:String,context: Context){
         val listItemUser = ArrayList<UserItem>()
         val asyncClient = AsyncHttpClient()
-        asyncClient.addHeader("Authorization", "token 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")
+        asyncClient.addHeader("Authorization", "token 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")
         asyncClient.addHeader("User-Agent", "request")
         val url = "https://api.github.com/search/users?q=${user}"
 
@@ -49,7 +54,7 @@ class MainViewModel : ViewModel() {
                     listUser.postValue(listItemUser)
                    // showLoading(false)
                 } catch (e: Exception) {
-                   // Toast.makeText(, "Exception =" + e.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Exception =" + e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                    // showLoading(false)
                 }
@@ -63,7 +68,7 @@ class MainViewModel : ViewModel() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error?.message}"
                 }
-               // Toast.makeText(Context, errorMessage, Toast.LENGTH_SHORT).show()
+               Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
                // showLoading(false)
             }
 
@@ -74,10 +79,10 @@ class MainViewModel : ViewModel() {
         return listUser
     }
 
-    fun setDetailDataUser(user:String){
+    fun setDetailDataUser(user:String, context: Context){
         val detailUserAdd = ArrayList<UserDetailItem>()
         val asyncClient = AsyncHttpClient()
-        asyncClient.addHeader("Authorization","token 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")
+        asyncClient.addHeader("Authorization","token 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")
         asyncClient.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users/${user}"
 
@@ -99,7 +104,7 @@ class MainViewModel : ViewModel() {
                     detailUser.postValue(detailUserAdd)
 
                 }catch (e: Exception){
-                //    Toast.makeText(baseContext, "Exception ="+e.message, Toast.LENGTH_SHORT).show()
+                   Toast.makeText(context, "Exception ="+e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                   //  showLoading(false)
                 }
@@ -114,7 +119,7 @@ class MainViewModel : ViewModel() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error?.message}"
                 }
-               // Toast.makeText(baseContext, errorMessage, Toast.LENGTH_SHORT).show()
+               Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
               //  showLoading(false)
             }
 
@@ -126,9 +131,9 @@ class MainViewModel : ViewModel() {
     }
 
     fun setListFollowers(user: String){
-        val listItemFollowers = java.util.ArrayList<FollowersFollowingItem>()
+        val listItemFollowers = java.util.ArrayList<UserItem>()
         val asyncClient = AsyncHttpClient()
-        asyncClient.addHeader("Authorization","token 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")
+        asyncClient.addHeader("Authorization","token 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")
         asyncClient.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users/${user}/followers"
 
@@ -143,7 +148,7 @@ class MainViewModel : ViewModel() {
                     val jsonArray = JSONArray(result)
 
                     for (i in 0 until jsonArray.length()){
-                        val followersItem = FollowersFollowingItem()
+                        val followersItem = UserItem()
                         val jsonObject = jsonArray.getJSONObject(i)
 
                         followersItem.nameLogin = jsonObject.getString("login")
@@ -156,7 +161,7 @@ class MainViewModel : ViewModel() {
                     //adapter.setData(listItemFollowers)
 
                 }catch (e : Exception){
-                //    Toast.makeText(activity, "Exception =" + e.message, Toast.LENGTH_SHORT).show()
+                   //Toast.makeText(activity, "Exception =" + e.message, Toast.LENGTH_SHORT).show()
 
                 }
             }
@@ -168,25 +173,22 @@ class MainViewModel : ViewModel() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error?.message}"
                 }
-            //    Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show()
-
-
-
+               //Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
 
         })
     }
 
-    fun getListFollowers():LiveData<ArrayList<FollowersFollowingItem>>{
+    fun getListFollowers():LiveData<ArrayList<UserItem>>{
         return listFollowers
     }
 
 
     fun setListFollowing(user: String){
-        val listItemFollowers = java.util.ArrayList<FollowersFollowingItem>()
+        val listItemFollowers = java.util.ArrayList<UserItem>()
         val asyncClient = AsyncHttpClient()
 
-        asyncClient.addHeader("Authorization","token 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")
+        asyncClient.addHeader("Authorization","token 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")
         asyncClient.addHeader("User-Agent", "request")
         val url = "https://api.github.com/users/${user}/following"
         asyncClient.get(url,object :AsyncHttpResponseHandler(){
@@ -197,7 +199,7 @@ class MainViewModel : ViewModel() {
                     val jsonArray = JSONArray(result)
 
                     for (i in 0 until jsonArray.length()){
-                        val followersItem = FollowersFollowingItem()
+                        val followersItem = UserItem()
                         val jsonObject = jsonArray.getJSONObject(i)
 
                         followersItem.nameLogin = jsonObject.getString("login")
@@ -209,7 +211,7 @@ class MainViewModel : ViewModel() {
                     //adapter.setData(listItemFollowers)
                     listFollowing.postValue(listItemFollowers)
                 }catch (e : Exception){
-                 //   Toast.makeText(activity, "Exception =" + e.message, Toast.LENGTH_SHORT).show()
+                   //Toast.makeText(context, "Exception =" + e.message, Toast.LENGTH_SHORT).show()
 
                 }
             }
@@ -221,14 +223,14 @@ class MainViewModel : ViewModel() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error?.message}"
                 }
-              //  Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show()
+              // Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
 
             }
 
         })
     }
 
-    fun getListFollowing():LiveData<ArrayList<FollowersFollowingItem>>{
+    fun getListFollowing():LiveData<ArrayList<UserItem>>{
         return listFollowing
     }
 

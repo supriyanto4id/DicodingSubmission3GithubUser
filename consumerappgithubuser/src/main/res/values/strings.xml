@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">ConsumerAppGithubUser</string>
+    <string name="app_name">Github User"'"s Search</string>
+    <string name="search">Search</string>
+    <string name="login_name">Login Name</string>
+    <string name="tab_text_1">Followers</string>
+    <string name="tab_text_2">Following</string>
+    <string name="search_user">Search User</string>
+    <string name="change_language_setting">Change Language Setting</string>
+    <string name="username_icon">Username Icon</string>
+    <string name="company_icon">Company Icon</string>
+    <string name="website_icon">Website Icon</string>
+    <string name="location_icon">Location Icon</string>
+    <string name="favorite_action">Favorite Action</string>
+    <string name="reminder_setting">Reminder Setting</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="set_time">Set Time</string>
+    <string name="on_off">ON / OFF</string>
+    <string name="set_time_for_daily_reminder">Set Time For Daily Reminder</string>
+    <string name="remnider_on_09_00">Remnider on 09:00</string>
+    <string name="add_favorite">Add favorite</string>
+    <string name="delete_favorite">delete favorite</string>
+    <string name="alarm_message_reminder_alarm">Hallo find new user in github user</string>
+    <string name="setting">Setting</string>
+    <string name="detail">Detail</string>
+    <string name="favorite_user">Favorite User</string>
+    <string name="daily_reminder_on">Daily reminder is ON</string>
+    <string name="setting_daily_notification">Setting Daily Notification</string>
+    <string name="favorite">Favorite</string>
+    <string name="daily_reminder_off">Daily Reminder is Off</string>
 </resources>

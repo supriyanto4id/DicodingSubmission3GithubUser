@@ -21,6 +21,7 @@ import com.example.githubuser.databinding.ActivityUserDetailBinding
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.AVATAR_URL
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.BLOG_URL
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.COMPANY
+import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.LOCATION
 import com.example.githubuser.db.DatabaseContract.UserColumns.Companion.USERNAME
 import com.example.githubuser.db.UserHelper
@@ -188,8 +189,9 @@ class UserDetail() : AppCompatActivity(), View.OnClickListener {
             values.put(BLOG_URL,linkUrl)
             values.put(LOCATION, location)
 
-            userHelper.insert(values)
+            //userHelper.insert(values)
             isFavorite =true
+            contentResolver.insert(CONTENT_URI,values)
             Toast.makeText(this, getString(R.string.add_favorite), Toast.LENGTH_SHORT).show()
             binding.Fav.setImageResource(checked)
             }
