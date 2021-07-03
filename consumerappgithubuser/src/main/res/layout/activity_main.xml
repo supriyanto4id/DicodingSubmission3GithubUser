@@ -8,35 +8,13 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/progress_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/secondaryTextColor"
-                    android:indeterminate="true"
-                    android:visibility="gone"/>
-
-                <SearchView
-
-                    android:id="@+id/search"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="@string/search_user" />
-            </RelativeLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="wrap_content"
+        android:background="@color/secondaryTextColor"
+        android:indeterminate="true"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"

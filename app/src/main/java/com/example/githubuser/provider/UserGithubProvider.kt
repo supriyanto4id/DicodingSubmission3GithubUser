@@ -14,8 +14,8 @@ import com.example.githubuser.db.UserHelper
 class UserGithubProvider : ContentProvider() {
 
     companion object{
-        private const val USER_FAV=1
-        private const val USER_FAV_ID=2
+        private const val USER_FAV= 1
+        private const val USER_FAV_ID= 2
         private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
         private lateinit var userHelper: UserHelper
 

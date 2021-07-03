@@ -7,9 +7,9 @@ import myid.supri.consumerappgithubuser.db.DatabaseContract
 
 object MappingHelper {
 
-    fun mapCursorToArrayList(userCursor: Cursor): ArrayList<Favorite>{
+    fun mapCursorToArrayList(userCursor: Cursor?): ArrayList<Favorite>{
         val userList= ArrayList<Favorite>()
-        userCursor.apply {
+        userCursor?.apply {
             while (moveToNext()){
                 val id = getInt(getColumnIndexOrThrow(DatabaseContract.UserColumns._ID))
                 val username = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.USERNAME))
@@ -29,7 +29,8 @@ object MappingHelper {
                 )
             }
         }
-
         return userList
     }
+
+
 }

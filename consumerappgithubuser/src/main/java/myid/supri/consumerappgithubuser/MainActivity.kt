@@ -1,119 +1,97 @@
 package myid.supri.consumerappgithubuser
 
-import android.content.Intent
+
+import android.database.ContentObserver
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.os.Handler
+import android.os.HandlerThread
+
+
+
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
+
 import androidx.recyclerview.widget.LinearLayoutManager
-import myid.supri.consumerappgithubuser.UserDetail.Companion.EXTRA_USER
-import myid.supri.consumerappgithubuser.adapter.UserAdapter
-import myid.supri.consumerappgithubuser.data.UserItem
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+
+import myid.supri.consumerappgithubuser.adapter.UserFavAdapter
 import myid.supri.consumerappgithubuser.databinding.ActivityMainBinding
-import myid.supri.consumerappgithubuser.databinding.ItemUserBinding
-import myid.supri.consumerappgithubuser.model.MainViewModel
+import myid.supri.consumerappgithubuser.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import myid.supri.consumerappgithubuser.helper.MappingHelper
+
+import java.util.*
 
 
-class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity() {
 
-    private lateinit var adapter: UserAdapter
+    private lateinit var adapter: UserFavAdapter
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var mainViewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title="Consume Github User"
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = UserAdapter()
-        adapter.notifyDataSetChanged()
-
         binding.recycleView.layoutManager = LinearLayoutManager(this)
+        binding.recycleView.setHasFixedSize(true)
+        adapter = UserFavAdapter(this)
         binding.recycleView.adapter = adapter
 
-        binding.search.setOnQueryTextListener(this)
 
-
-        mainViewModel = ViewModelProvider(this,ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
-
-        mainViewModel.getDataUser().observe(this,{UserItem->
-            if (UserItem!=null){
-                adapter.setData(UserItem)
+        val handleTherad = HandlerThread("DataObserve")
+        handleTherad.start()
+        val handler = Handler(handleTherad.looper)
+        val myObserve = object:ContentObserver(handler){
+            override fun onChange(selfChange: Boolean) {
+                super.onChange(selfChange)
+                loadUserAsync()
 
             }
-            showLoading(false)
-        })
-        //list item click to detail
-        adapter.setOnItemCallback(object : UserAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: UserItem) {
-                val intentData = Intent(this@MainActivity, UserDetail::class.java)
-                intentData.putExtra(EXTRA_USER, data)
-                startActivity(intentData)
-            }
-
-        })
+        }
 
 
+        contentResolver.registerContentObserver(CONTENT_URI, true, myObserve)
 
-
-
+        loadUserAsync()
     }
 
+    private fun loadUserAsync(){
+        GlobalScope.launch (Dispatchers.Main){
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.option_menu, menu)
-        inflater.inflate(R.menu.menu,menu)
-        return true
-    }
+            val deferredUser = async(Dispatchers.IO) {
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId){
-            R.id.action_change_settings->{
-                val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-                startActivity(intent)
-            }
-            R.id.favorite->{
-                val intent =Intent(this@MainActivity,FavoriteUserActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.setting_daily_notification->{
-            val intent = Intent(this,NotificationActivity::class.java)
-                startActivity(intent)
-            }
+                val cursor = contentResolver?.query(CONTENT_URI,null,null,null,null)
+                MappingHelper.mapCursorToArrayList(cursor)
             }
 
-        return super.onOptionsItemSelected(item)
-    }
 
+            val user =deferredUser.await()
 
-   private fun showLoading(state: Boolean) {
-        if (state) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
+            if (user.size >0){
+                adapter.listUser =user
+            }else{
+                adapter.listUser =ArrayList()
+                showSnackbarMessage("Tidak ada data saat ini")
+            }
+
         }
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        showLoading(true)
-        mainViewModel.setDataUser(query.toString(),this)
-        return false
+
+
+
+
+    private fun showSnackbarMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        return false
-    }
 
 
 }

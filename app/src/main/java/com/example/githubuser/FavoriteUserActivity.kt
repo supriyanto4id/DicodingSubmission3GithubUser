@@ -49,6 +49,7 @@ class FavoriteUserActivity : AppCompatActivity() {
             override fun onChange(selfChange: Boolean) {
                 super.onChange(selfChange)
                 loadNotesAsync()
+
             }
         }
 

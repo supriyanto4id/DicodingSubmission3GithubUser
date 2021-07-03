@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pengguna Github</string>
-    <string name="search">Cari</string>
+    <string name="app_name">Consumer Pengguna Github</string>
     <string name="login_name">Nama</string>
-    <string name="tab_text_1">Pengikut</string>
-    <string name="tab_text_2">Mengikuti</string>
-    <string name="search_user">Cari Penguna Github</string>
-    <string name="change_language_setting">Ubah Pengaturan Bahasa</string>
-    <string name="username_icon">Icon Pengun</string>
-    <string name="company_icon">Icon Perusahaan</string>
-    <string name="website_icon">Icon Website</string>
-    <string name="location_icon">Icon Lokasi</string>
-    <string name="favorite_action">Disukai</string>
-    <string name="reminder_setting">Pengaturan Pengingat</string>
-    <string name="daily_reminder">Pengingat Harian</string>
-    <string name="set_time">Tetapkan Waktu</string>
-    <string name="on_off">Hidup / Mati</string>
-    <string name="set_time_for_daily_reminder">Tetapkan waktu untuk pengingat harian</string>
-    <string name="remnider_on_09_00">Pengingat jam 09:00</string>
-    <string name="add_favorite">Tambahkan disukai</string>
-    <string name="delete_favorite">Hapus disukai</string>
-    <string name="alarm_message_reminder_alarm">Hai! ayo cari penguna github di sini</string>
-    <string name="setting">Pengaturan</string>
-    <string name="detail">Detail</string>
-    <string name="favorite_user">Penguna yang disuka</string>
-    <string name="daily_reminder_on">Pengingat harian hidup</string>
-    <string name="setting_daily_notification">Pengaturan pengingat harian</string>
-    <string name="favorite">Disuka</string>
-    <string name="daily_reminder_off">Pengingat harian mati</string>
 </resources>
